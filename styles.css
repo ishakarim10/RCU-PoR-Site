@@ -1,0 +1,113 @@
+h1{
+    color: red;
+    font-size: 4rem;
+}
+h2{
+    color: green;
+    font-size: 4rem;
+}
+p{
+    color: black;
+    width: 50%;
+    margin: 2rem 0;
+}
+body{
+    background-color: #b5e0f1;
+    font-family: 'Optima', sans-serif;
+    width: 100%;
+    height: 100%;  
+    overflow: hidden; 
+    color: black; 
+    transition: background-color 5s ease-in-out;
+}
+
+.section {
+    height: 100vh; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    transition: background-color 0.3s;
+}
+
+.section:nth-child(even){
+    background-color: #f0f0f0;
+}
+
+.section:nth-child(odd){
+    background-color: #ccc;
+}
+
+.active {
+    background-color: #3498db;
+}
+
+.callout {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.callout:hover .callout-text {
+    display: block;
+}
+
+.callout-text {
+    display: none;
+    position: absolute;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.annotate {
+    position: relative;
+  }
+  .annotate:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place the pseudo element right under the content */
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, red 100%, transparent 50%);
+    animation-name: highlight;
+    animation-duration: 3.7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; /* Make the animation run back and forth */
+  }
+  
+  @keyframes highlight {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+  
+    50% {
+      width: 100%;
+      opacity: 1;
+    }
+  
+  }
+
+  @keyframes textCascade {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animated-text {
+    animation: textCascade 0.5s ease-out;
+}

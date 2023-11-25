@@ -1,0 +1,91 @@
+
+<!DOCTYPE html> <!-- all html file must begin like this  <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css"> <!-- link to css RULE sheet -->
+        <title>RCU Website</title>
+    </head>
+    <body>
+
+        <div class="section active">Section 1
+            <h1 class="animated-text">Welcome to My Website!</h1> 
+        </div>
+        <div class="section">Section 2</div>
+        <div class="section">Section 3</div>
+
+        <script>
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowRight') {
+                    scrollToNextSection();
+                } else if (event.key === 'ArrowLeft') {
+                    scrollToPreviousSection();
+                }
+            });
+    
+            function scrollToNextSection() {
+                const currentSection = document.querySelector('.section.active');
+                const nextSection = currentSection.nextElementSibling;
+    
+                if (nextSection) {
+                    currentSection.classList.remove('active');
+                    nextSection.classList.add('active');
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+    
+            function scrollToPreviousSection() {
+                const currentSection = document.querySelector('.section.active');
+                const previousSection = currentSection.previousElementSibling;
+    
+                if (previousSection) {
+                    currentSection.classList.remove('active');
+                    previousSection.classList.add('active');
+                    previousSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                }
+            }
+        </script>
+ 
+        <h2>My first title in RED</h2>
+        <p>My Page: page 1</p> 
+        <p>welcome to my first website. how are you doing?</p> 
+        <p>
+            The <span class="annotate">MOVING SENTENCE</span>
+        </p>
+        <p>
+            We will discuss questions of <span class="annotate">SURPLUS</span>.<br> Additionally, we will talk 
+            about terms such as labor and markets.
+        </p>
+
+        <p>
+            Hover over the
+            <span class="callout" data-content="This is some other information for word 1.">
+                important word 1
+                <span class="callout-text"></span>
+            </span>
+            and
+            <span class="callout" data-content="This is some additional information for word 2.">
+                important word 2
+                <span class="callout-text"></span>
+            </span>
+            to see different callouts.
+        </p>
+
+        <script>
+            // Get all elements with the callout class
+            const callouts = document.querySelectorAll('.callout');
+    
+            // Add event listeners for mouseover and populate the callout text dynamically
+            callouts.forEach(callout => {
+                callout.addEventListener('mouseover', () => {
+                    const calloutText = callout.querySelector('.callout-text');
+                    const content = callout.getAttribute('data-content');
+                    calloutText.innerText = content;
+                });
+            });
+        </script>
+    
+
+
+    </body>
+</html>
